@@ -1,0 +1,15 @@
+width = 80%
+height = 19
+offset-x = 10%
+offset-y = 24
+
+override-redirect = true
+wm-restack = i3
+
+background = ${colors.background-alt}
+foreground = ${colors.foreground-alt}
+font-0 = "Iosevka-Term:size=6;2"
+font-1 = "Material Icons:antialias=false:size=8;4"
+cursor-click = pointer
+border-top-size = 1
+border-top-color = ${colors.border}

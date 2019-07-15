@@ -1,0 +1,58 @@
+#define c00 #000000
+#define c01 #b04b57
+#define c02 #87b379
+#define c03 #e5c179
+#define c04 #7d8fa4
+#define c05 #a47996
+#define c06 #85a7a5
+#define c07 #b3b8c3
+#define cbg #20242d
+#define cfg #b3b8c3
+
+XTerm*color0: c00
+XTerm*color1: c01
+XTerm*color2: c02
+XTerm*color3: c03
+XTerm*color4: c04
+XTerm*color5: c05
+XTerm*color6: c06
+XTerm*color7: c07
+XTerm*color8: c00
+XTerm*color9: c01
+XTerm*color10: c02
+XTerm*color11: c03
+XTerm*color12: c04
+XTerm*color13: c05
+XTerm*color14: c06
+XTerm*color15: c07
+XTerm*background: cbg
+XTerm*foreground: cfg
+
+*color0: c00
+*color1: c01
+*color2: c02
+*color3: c03
+*color4: c04
+*color5: c05
+*color6: c06
+*color7: c07
+*color8: c00
+*color9: c01
+*color10: c02
+*color11: c03
+*color12: c04
+*color13: c05
+*color14: c06
+*color15: c07
+*background: cbg
+*foreground: cfg
+
+rofi.color-enabled: true
+rofi.color-normal: cbg, cfg, cbg, c03, cbg
+rofi.color-window: cbg, argb:00000000, c03
+rofi.color-active: c03, cbg, cfg, c03, #282828
+rofi.separator-style: solid
+rofi.sidebar-mode: true
+
+XTerm*selectToClipboard: true
+XTerm*vt100.faceName: Iosevka Term:size=10

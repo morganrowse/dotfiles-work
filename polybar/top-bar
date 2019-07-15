@@ -1,0 +1,14 @@
+width = 100%
+height = 20
+offset-x = 0%
+offset-y = 0
+
+override-redirect = true
+wm-restack = i3
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+font-0 = "Iosevka-Term:size=6;2"
+font-1 = "Material Icons:antialias=false:size=8;4"
+cursor-click = pointer
+#separator = " %{F#555588}*%{F-} "

@@ -1,0 +1,178 @@
+[colors]
+background = #e620242d
+foreground = ${xrdb:foreground}
+primary = ${xrdb:color12}
+secondary = ${xrdb:color14}
+alert = ${xrdb:color1}
+border = ${xrdb:color13}
+padding = 2
+
+[bar/top]
+monitor = ${env:MONITOR:}
+dpi = 133
+include-file = ~/.config/polybar/top-bar
+modules-left = hostname uptime ip i3
+modules-center = date
+modules-right = cpu memory network sentry status stacks instances updates lock logout
+
+[bar/top-second]
+monitor = "DP-1"
+dpi = 133
+include-file = ~/.config/polybar/top-second-bar
+modules-left = pulseaudio
+modules-center = wave wave
+modules-right =
+
+[module/base]
+# background = ${colors.background}
+format-prefix-foreground = ${colors.secondary}
+format-suffix-foreground = ${colors.secondary}
+radius = 5
+
+[module/logout]
+inherit = module/base
+type = custom/text
+content = 
+content-foreground = ${colors.alert}
+click-left = "i3-nagbar -t warning -m 'Are you sure?' -b 'Yes' 'i3-msg exit'"	
+
+[module/uptime]
+inherit = module/base
+type = custom/script
+exec = uptime|awk '{print $2 " " $3 " " $4 " " $5 " " $6}'|cut -d ',' -f -2
+interval = 3
+format-prefix="  "
+
+[module/ip]
+inherit = module/base
+type = custom/script
+interval = 10
+format-prefix = "  "
+exec = echo "$(wget -q -O - https://l2.io/ip | sed -e 's/[^[:digit:]\|.]//g')"
+exec-if = ping -c 1 gentoo.org
+
+[module/wave]
+inherit = module/base
+type = custom/text
+content = *~’^‘~*-,._.,-*~’^‘~*
+content-foreground = ${colors.primary}
+
+[module/hostname]
+inherit = module/base
+type = custom/script
+interval = 256
+format = "<label> "
+format-prefix = " "
+exec = echo "$(uname -n)"
+
+[module/cpu]
+inherit = module/base
+type = internal/cpu
+interval = 3
+format-prefix = " "
+label = %percentage%%
+
+[module/memory]
+inherit = module/base
+type = internal/memory
+interval = 3
+format-prefix = "mem: "
+label = %percentage_used%%
+
+[module/network]
+inherit = module/base
+type = custom/script
+exec = bash ~/.config/polybar/scripts/network.sh
+interval = 5
+format-prefix = " "
+
+[module/status]
+inherit = module/base
+type= custom/script
+exec = bash ~/.config/polybar/scripts/status.sh
+click-left = firefox https://status.jemstep.com
+interval = 300
+format-prefix = " "
+
+[module/date]
+inherit = module/base
+type = internal/date
+interval = 5
+date = " %A %d %b"
+time = "%I:%M %p"
+format-prefix = "<;;;;;;;;;]xxxx(  "
+format-suffix = " )xxxx[;;;;;;;;;>"
+label = %time% %date%
+
+[module/pulseaudio]
+inherit = module/base
+type = internal/pulseaudio
+use-ui-max = false
+volume = <label-volume>
+format-prefix = "vol: "
+label = volume
+label-muted = 🔇 muted
+label-muted-foreground = #66
+
+[settings]
+screenchange-reload = true
+format-padding = ${colors.padding}
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+[module/i3]
+inherit = module/base
+type = internal/i3
+format-prefix = ""
+index-sort = true
+format = <label-state> <label-mode>
+pin-workspaces = true
+enable-scroll = false
+
+[module/lock]
+inherit = module/base
+type = custom/text
+content = 
+content-foreground = ${colors.secondary}
+click-left = bash ~/.config/i3/scripts/blurlock.sh
+
+[module/sentry]
+inherit = module/base
+type= custom/script
+exec = bash ~/.config/polybar/scripts/sentry.sh
+click-left = firefox https://sentry.io/organizations/jemstepcom/issues
+interval = 300
+format-prefix = " "
+
+[module/updates]
+inherit = module/base
+type = custom/script
+exec = bash ~/.config/polybar/scripts/updates.sh
+click-left = bash ~/.config/polybar/scripts/run_updates.sh
+interval = 300
+format-prefix = " "
+
+[module/instances]
+inherit = module/base
+type = custom/script
+exec = bash ~/.config/polybar/scripts/instances.sh
+click-left = firefox https://us-west-1.console.aws.amazon.com/ec2/v2/home
+interval = 300
+format-prefix = " "
+
+[module/stacks]
+inherit = module/base
+type = custom/script
+exec = bash ~/.config/polybar/scripts/stacks.sh
+click-left = firefox https://us-west-1.console.aws.amazon.com/cloudformation/home
+interval = 300
+format-prefix = " "
+
+[module/minikube]
+inherit = module/base
+type = custom/script
+exec = bash ~/.config/polybar/scripts/minikube.sh
+interval = 300
+format-prefix = " "

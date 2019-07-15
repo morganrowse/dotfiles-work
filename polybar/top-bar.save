@@ -1,0 +1,17 @@
+width = 86%
+height = 19
+offset-x = 7%
+offset-y = 4
+
+override-redirect = true
+wm-restack = i3
+
+background = ${colors.background-alt}
+foreground = ${colors.foreground-alt}
+font-0 = "Iosevka-Term:size=6;2"
+font-1 = "Material Icons:antialias=false:size=8;4"
+cursor-click = pointer
+border-bottom-size = 0
+border-bottom-color = ${colors.background}
+separator = " %{F#555588}*%{F-} "
+format-background: #00ff00
