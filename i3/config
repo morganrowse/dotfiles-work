@@ -26,7 +26,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec "rofi -hide-scrollbar -combi-modi window,drun -show combi -modi combi -display-combi \\"run\\""
 
 # move the window cursor
-bindsym $mod+Left left
+bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
