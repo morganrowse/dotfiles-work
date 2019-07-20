@@ -26,7 +26,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec "rofi -hide-scrollbar -combi-modi window,drun -show combi -modi combi -display-combi \\"run\\""
 
 # move the window cursor
-bindsym $mod+Left focus left
+bindsym $mod+Left left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
@@ -111,6 +111,7 @@ for_window [class=".*"] border pixel 1
 # for_window [class=".*"] floating disable
 hide_edge_borders both
 focus_follows_mouse no
+focus_on_window_activation focus
 
 gaps bottom 0
 gaps top 20
